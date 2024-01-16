@@ -1,0 +1,24 @@
+.content-box {
+  height: 197.87px;
+  border-radius: 16px;
+  background: white;
+  padding: 40px 60px 40px 40px;
+}
+.feature {
+  height: 25px;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 25px;
+  margin: 20px 0px 15px 0px;
+  color: #333333;
+}
+.description {
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: #555555;
+}
