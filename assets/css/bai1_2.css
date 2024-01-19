@@ -1,0 +1,21 @@
+body {
+  font-family: 'inter';
+}
+body {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  body {
+    margin-left: 160px;
+    margin-right: 160px;
+  }
+}
