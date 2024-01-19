@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'inter';
+      }
+      body {
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+
+      @media screen and (min-width: 1024px) {
+        body {
+          margin-left: 80px;
+          margin-right: 80px;
+        }
+      }
+
+      @media screen and (min-width: 1440px) {
+        body {
+          margin-left: 160px;
+          margin-right: 160px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex justify-between my-20 mx-10">
+      <div class="flex gap-[15px]">
+        <div class="flex flex-col relative">
+          <div class="absolute translate-y-[-25px] translate-x-[10px] py-1 bg-white z-10">
+            <label for="filter_sort_by" class="text-gray-500">Sorted By</label>
+          </div>
+          <select id="filter_sort_by" class="font-semibold px-5 py-2 bg-white border-[1px] border-gray-400">
+            <option value="useless-first">Useless First</option>
+            <option value="most-popular">Most Popular</option>
+            <option value="most-search">Most Search</option>
+          </select>
+        </div>
+        <div>
+          <select id="filter_condition" class="px-5 py-2 bg-white border-[1px] border-gray-400">
+            <option value="" disabled selected>Condition</option>
+            <option class="text-gray-500" value="New">New</option>
+            <option class="text-gray-500" value="99%">99%</option>
+            <option class="text-gray-500" value="95%">95%</option>
+          </select>
+        </div>
+        <div>
+          <select id="filter_delivery" class="px-5 py-2 bg-white border-[1px] border-gray-400">
+            <option value="" disabled selected>Delivery Option</option>
+            <option class="text-gray-500" value="normal">Normal</option>
+            <option class="text-gray-500" value="1-days">Within 1 day</option>
+            <option class="text-gray-500" value="3-days">Less than 3 days</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex gap-[20px]">
+        <!-- Custom Radio Type for 3 options purchases -->
+        <form id="purchase" class="flex items-center">
+          <input hidden type="radio" id="all" name="type" value="all" checked />
+          <label class="px-2 py-2 bg-blue-200" for="all" class="text-gray-500">Show All</label>
+          <input hidden type="radio" id="auction" name="type" value="auction" />
+          <label class="px-2 py-2 bg-blue-200" for="auction" class="text-gray-500">Auction</label>
+          <input hidden type="radio" id="buy-now" name="type" value="now" />
+          <label class="px-2 py-2 bg-blue-200" for="buy-now" class="text-gray-500">Buy Now</label>
+        </form>
+
+        <!-- Custom Radio Type for 2 display Option: grid and list -->
+        <form id="display" class="flex items-center">
+          <input hidden type="radio" id="grid" name="display" value="grid" checked />
+          <label class="px-2 py-2 bg-blue-200" for="grid" class="text-gray-500"><i class="fa-solid fa-bars"></i></label>
+          <input hidden type="radio" id="list" name="display" value="list" />
+          <label class="px-2 py-2 bg-blue-200" for="list" class="text-gray-500"><i class="fa-solid fa-list"></i></label>
+        </form>
+      </div>
+    </div>
+    <div class="flex gap-[10px] mx-10">
+      <div class="font-bold">Related</div>
+      <div class="bg-gray-200 text-gray-700 px-3 py-[1px] rounded-[99px]">worldwide Shopping</div>
+      <div class="bg-gray-200 text-gray-700 px-3 py-[1px] rounded-[99px]">under 50$</div>
+      <div class="bg-gray-200 text-gray-700 px-3 py-[1px] rounded-[99px]">kitten</div>
+      <div class="bg-gray-200 text-gray-700 px-3 py-[1px] rounded-[99px]">plastic plugs</div>
+      <div class="bg-gray-200 text-gray-700 px-3 py-[1px] rounded-[99px]">pucker shoes</div>
+      <div class="bg-gray-200 text-gray-700 px-3 py-[1px] rounded-[99px]">vintage typewriter</div>
+    </div>
+
+    <!-- Selling Area -->
+    <div class="flex ml-10 mr-[50px] gap-[10px] my-[25px]">
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/typewriter.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$49.50</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/shoes.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$49.50</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/cats.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$13.95</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/plugs.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$128.99</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex ml-10 mr-[50px] gap-[10px] my-[25px]">
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/drinking.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$12.48</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/evenlopes.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$12.48</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/pants.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$128.99</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/envelope2.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$13.95</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex ml-10 mr-[50px] gap-[10px] my-[25px]">
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/teapot.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$9.50</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/bonsai.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$128.99</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/lipstick.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="w-full self-start font-bold text-[24px]">
+            <div style="display: flex; justify-content: space-between">
+              <div>$11.68</div>
+              <div class="px-2 py-2 text-[#C23564] font-normal text-[12px] bg-pink-100">Cool deal!</div>
+            </div>
+          </div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow" style="flex-basis: calc(100% / 4)">
+        <div class="flex flex-col justify-center items-center hover:shadow-lg p-[5px] rounded-[5px]">
+          <img src="/assets/images/comestic.png" class="w-full" />
+          <a href="#">Vintage Typewriter to post awesome stories about UI design and webdev.</a>
+          <div class="self-start font-bold text-[24px]">$1.25</div>
+          <div class="text-[#787885]">Eligible for Shipping To Mars or somewhere else</div>
+          <div class="flex justify-end items-center gap-10">
+            <div>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <i class="fa fa-star text-[#FB8200]" aria-hidden="true"></i>
+              <span>4.05</span>
+            </div>
+            <div>
+              <button class="px-2 py-2 bg-transparent text-[#2264D1] border-[#2264D1] border-[1px]">
+                <i class="fa-regular fa-heart"></i>
+                Watch
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Features -->
+    <div class="flex gap-[15px] mt- mb-[50px]">
+      <div class="bg-[#EDEDF0] flex-grow flex flex-col justify-center items-center" style="flex-basis: calc(100% / 3)">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M56 38H62V42H56V38ZM18 38H24V42H18V38ZM42 18V24H38V18H42ZM25.84 23L30.1 27.28L27.26 30.1L23 25.86L25.84 23ZM49.9 27.26L54.14 23L57 25.86L52.74 30.1L49.9 27.26ZM40 28C43.1826 28 46.2348 29.2643 48.4853 31.5147C50.7357 33.7652 52 36.8174 52 40C52 44.44 49.58 48.32 46 50.4V54C46 54.5304 45.7893 55.0391 45.4142 55.4142C45.0391 55.7893 44.5304 56 44 56H36C35.4696 56 34.9609 55.7893 34.5858 55.4142C34.2107 55.0391 34 54.5304 34 54V50.4C30.42 48.32 28 44.44 28 40C28 36.8174 29.2643 33.7652 31.5147 31.5147C33.7652 29.2643 36.8174 28 40 28ZM44 58V60C44 60.5304 43.7893 61.0391 43.4142 61.4142C43.0391 61.7893 42.5304 62 42 62H38C37.4696 62 36.9609 61.7893 36.5858 61.4142C36.2107 61.0391 36 60.5304 36 60V58H44ZM38 52H42V47.74C45.46 46.86 48 43.72 48 40C48 37.8783 47.1571 35.8434 45.6569 34.3431C44.1566 32.8429 42.1217 32 40 32C37.8783 32 35.8434 32.8429 34.3431 34.3431C32.8429 35.8434 32 37.8783 32 40C32 43.72 34.54 46.86 38 47.74V52Z"
+            fill="#65B168"
+          />
+        </svg>
+        <div class="font-bold text-[20px]" style="font-family: 'quicksand'">Clear & Usable user flows</div>
+        <div class="font-[#5A5B6A]">Let's boost yout marketplace</div>
+      </div>
+      <div class="bg-[#EDEDF0] flex-grow flex flex-col justify-center items-center" style="flex-basis: calc(100% / 3)">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M31.005 25.2L26.005 28L28.805 23L26.005 18L31.005 20.8L36.005 18L33.205 23L36.005 28L31.005 25.2ZM55.005 44.8L60.005 42L57.205 47L60.005 52L55.005 49.2L50.005 52L52.805 47L50.005 42L55.005 44.8ZM60.005 18L57.205 23L60.005 28L55.005 25.2L50.005 28L52.805 23L50.005 18L55.005 20.8L60.005 18ZM42.685 39.56L47.565 34.68L43.325 30.44L38.445 35.32L42.685 39.56ZM44.745 28.58L49.425 33.26C50.205 34 50.205 35.3 49.425 36.08L26.085 59.42C25.305 60.2 24.005 60.2 23.265 59.42L18.585 54.74C17.805 54 17.805 52.7 18.585 51.92L41.925 28.58C42.705 27.8 44.005 27.8 44.745 28.58Z"
+            fill="#7985CB"
+          />
+        </svg>
+
+        <div class="font-bold text-[20px]" style="font-family: 'quicksand'">Clear & Usable user flows</div>
+        <div class="font-[#5A5B6A]">Let's boost yout marketplace</div>
+      </div>
+      <div class="bg-[#EDEDF0] flex-grow flex flex-col justify-center items-center" style="flex-basis: calc(100% / 3)">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M51 40C50.2044 40 49.4413 39.6839 48.8787 39.1213C48.3161 38.5587 48 37.7956 48 37C48 36.2044 48.3161 35.4413 48.8787 34.8787C49.4413 34.3161 50.2044 34 51 34C51.7956 34 52.5587 34.3161 53.1213 34.8787C53.6839 35.4413 54 36.2044 54 37C54 37.7956 53.6839 38.5587 53.1213 39.1213C52.5587 39.6839 51.7956 40 51 40ZM45 32C44.2044 32 43.4413 31.6839 42.8787 31.1213C42.3161 30.5587 42 29.7956 42 29C42 28.2044 42.3161 27.4413 42.8787 26.8787C43.4413 26.3161 44.2044 26 45 26C45.7956 26 46.5587 26.3161 47.1213 26.8787C47.6839 27.4413 48 28.2044 48 29C48 29.7956 47.6839 30.5587 47.1213 31.1213C46.5587 31.6839 45.7956 32 45 32ZM35 32C34.2044 32 33.4413 31.6839 32.8787 31.1213C32.3161 30.5587 32 29.7956 32 29C32 28.2044 32.3161 27.4413 32.8787 26.8787C33.4413 26.3161 34.2044 26 35 26C35.7956 26 36.5587 26.3161 37.1213 26.8787C37.6839 27.4413 38 28.2044 38 29C38 29.7956 37.6839 30.5587 37.1213 31.1213C36.5587 31.6839 35.7956 32 35 32ZM29 40C28.2044 40 27.4413 39.6839 26.8787 39.1213C26.3161 38.5587 26 37.7956 26 37C26 36.2044 26.3161 35.4413 26.8787 34.8787C27.4413 34.3161 28.2044 34 29 34C29.7956 34 30.5587 34.3161 31.1213 34.8787C31.6839 35.4413 32 36.2044 32 37C32 37.7956 31.6839 38.5587 31.1213 39.1213C30.5587 39.6839 29.7956 40 29 40ZM40 22C35.2261 22 30.6477 23.8964 27.2721 27.2721C23.8964 30.6477 22 35.2261 22 40C22 44.7739 23.8964 49.3523 27.2721 52.7279C30.6477 56.1036 35.2261 58 40 58C40.7956 58 41.5587 57.6839 42.1213 57.1213C42.6839 56.5587 43 55.7957 43 55C43 54.22 42.7 53.52 42.22 53C41.76 52.46 41.46 51.76 41.46 51C41.46 50.2044 41.7761 49.4413 42.3387 48.8787C42.9013 48.3161 43.6644 48 44.46 48H48C50.6522 48 53.1957 46.9464 55.0711 45.0711C56.9464 43.1957 58 40.6522 58 38C58 29.16 49.94 22 40 22Z"
+            fill="#EF6292"
+          />
+        </svg>
+
+        <div class="font-bold text-[20px]" style="font-family: 'quicksand'">Clear & Usable user flows</div>
+        <div class="font-[#5A5B6A]">Let's boost yout marketplace</div>
+      </div>
+    </div>
+    <script src="/assets/js/bai1_2.js"></script>
+  </body>
+</html>
