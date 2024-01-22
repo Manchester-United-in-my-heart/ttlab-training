@@ -4,6 +4,7 @@ import Root from "./routes/root"
 import ErrorPage from './routes/error-page';
 import Contact from './routes/contact';
 import Login from './routes/login';
+import Test from './routes/test';
 import {
   createBrowserRouter,
   RouterProvider
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
    {
     path: '/login',
     element: <Login />,
-   }
+   },
+  {
+    path: '/test',
+    element: <Test/>
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

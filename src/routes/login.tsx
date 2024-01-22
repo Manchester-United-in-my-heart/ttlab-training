@@ -61,14 +61,14 @@ export default function Login() {
                   className="absolute right-[10px] top-[50px] text-xl"
                   onClick={() => {
                     setShowPassword(!showPassword);
-                    document.getElementById('password').setAttribute('type', 'text');
+                    document.getElementById('password')?.setAttribute('type', 'text');
                   }}
                 />
               ) : (
                 <FaEye
                   className="absolute right-[10px] top-[50px] text-xl"
                   onClick={() => {
-                    setShowPassword(!showPassword), document.getElementById('password').setAttribute('type', 'password');
+                    setShowPassword(!showPassword), document.getElementById('password')?.setAttribute('type', 'password');
                   }}
                 />
               )}
