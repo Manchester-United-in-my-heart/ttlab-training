@@ -76,8 +76,8 @@ export default function Login() {
           </div>
           <div className="flex justify-between w-[500px]">
             <div className="flex gap-[5px]">
-              <input type="checkbox" />
-              <label>Ghi nhớ Đăng nhập </label>
+              <input id="remember" type="checkbox" />
+              <label htmlFor="remember">Ghi nhớ Đăng nhập </label>
             </div>
             <div>
               <a className=" font-semibold text-[#0F60FF]" href="#">
