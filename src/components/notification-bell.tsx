@@ -1,0 +1,16 @@
+import { CiBellOn } from 'react-icons/ci';
+type Props = {
+  numberOfNotifications: number;
+};
+
+export const NotificationBell = (props: Props) => {
+  console.log(props);
+
+  const numberOfNotifications = props.numberOfNotifications;
+  return (
+    <div className="relative">
+      <CiBellOn className="w-8 h-8 text-gray-500" />
+      <div className="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full text-xs text-center text-white">{numberOfNotifications.toString()}</div>
+    </div>
+  );
+};
