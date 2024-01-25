@@ -52,7 +52,7 @@ export default function UserList(props: UserListProps) {
       <hr />
       {userListByPage[currentPage].map((user) => (
         <div className="w-full" key={user.email}>
-          <div className="grid grid-cols-[1fr_3fr_5fr_2fr_3fr_2fr]">
+          <div className="grid grid-cols-[1fr_3fr_5fr_2fr_3fr_2fr] py-3">
             <div>
               <img src={user.avatar} alt="" className="w-10 h-10" />
             </div>

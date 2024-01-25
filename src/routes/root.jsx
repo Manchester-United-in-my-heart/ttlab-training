@@ -330,7 +330,7 @@ export default function Root() {
                     </div>
                     <div>Tạo mới</div>
                   </button>
-                )
+                ) 
               )}
             </div>
             <div className="bg-white p-5 rounded-xl">{view === View.PRODUCT ? <ProductPage productList={filteredProductList} /> : view === View.USER && <UserPage users={filteredUserList} />}</div>

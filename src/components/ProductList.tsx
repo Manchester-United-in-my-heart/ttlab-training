@@ -42,7 +42,7 @@ export default function ProductList(props: ProductListProps) {
 
       {productListByPage[currentPage].map((product) => (
         <div className="w-full" key={product.name}>
-          <div className="grid grid-cols-[2fr_2fr_5fr_2fr_3fr_2fr]">
+          <div className="grid grid-cols-[2fr_2fr_5fr_2fr_3fr_2fr] py-3">
             <div className="font-semibold">{product.name}</div>
             <div>{product.price}</div>
             <div>{product.quantity}</div>
