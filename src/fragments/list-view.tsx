@@ -43,7 +43,7 @@ export default function ListView(props: ListViewProps) {
     USER: 'USER',
     PRODUCT: 'PRODUCT',
   };
-  const { isSideBarOpen, setIsSideBarOpen, dummyActiveUser, numberOfNotifications, dummyUsers, dummyProducts, view, setView, filteredUsers, setFilteredUsers, filteredProducts, setFilteredProducts, isUserModalOpen, setIsUserModalOpen, isProductModalOpen, setIsProductModalOpen, searchUser, searchProduct } = props;
+  const { isSideBarOpen, dummyActiveUser, numberOfNotifications, dummyUsers, dummyProducts, view, filteredUsers, setFilteredUsers, filteredProducts, setFilteredProducts, isUserModalOpen, setIsUserModalOpen, isProductModalOpen, setIsProductModalOpen, searchUser, searchProduct } = props;
   return (
     <div className={`${!isSideBarOpen && 'w-full'} ml-[10px] mr-[10px] pt-[10px]`}>
       {/* User Modal */}

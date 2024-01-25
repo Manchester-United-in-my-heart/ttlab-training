@@ -49,28 +49,30 @@ export default function UserList(props: UserListProps) {
         <div className="text-[#8B909A]">HOẠT ĐỘNG</div>
       </div>
       <hr />
-      {userListByPage[currentPage].map((user) => (
-        <div className="w-full" key={user.email}>
-          <div className="grid grid-cols-[1fr_3fr_5fr_2fr_3fr_2fr] py-3">
-            <div>
-              <img src={user.avatar} alt="" className="w-10 h-10" />
+      {userListByPage &&
+        userListByPage.length > 0 &&
+        userListByPage[currentPage].map((user) => (
+          <div className="w-full" key={user.email}>
+            <div className="grid grid-cols-[1fr_3fr_5fr_2fr_3fr_2fr] py-3">
+              <div>
+                <img src={user.avatar} alt="" className="w-10 h-10" />
+              </div>
+              <div className="font-semibold">{user.name}</div>
+              <div>{user.email}</div>
+              <div>{user.DOB.toLocaleDateString()}</div>
+              <div>{user.phone.toString()}</div>
+              <div>
+                <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
+                  <SlNote />
+                </button>
+                <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
+                  <BiTrash />
+                </button>
+              </div>
             </div>
-            <div className="font-semibold">{user.name}</div>
-            <div>{user.email}</div>
-            <div>{user.DOB.toLocaleDateString()}</div>
-            <div>{user.phone.toString()}</div>
-            <div>
-              <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
-                <SlNote />
-              </button>
-              <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
-                <BiTrash />
-              </button>
-            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-      ))}
+        ))}
       <div className="flex justify-between">
         {/* Set number of user per page: */}
         <div>

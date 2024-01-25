@@ -98,7 +98,7 @@ export const DummyUserList = [
 
   {
     avatar: 'https://i.pravatar.cc/150?img=3',
-    name: 'Nguyễn Văn A',
+    name: 'Bùi Dương Khâm',
     email: '123@gmail.com',
     DOB: new Date('2000-01-01'),
     phone: new Phone('0123456789'),
@@ -106,7 +106,7 @@ export const DummyUserList = [
 
   {
     avatar: 'https://i.pravatar.cc/150?img=3',
-    name: 'Nguyễn Văn A',
+    name: 'Bùi Dương Khâm',
     email: '123@gmail.com',
     DOB: new Date('2000-01-01'),
     phone: new Phone('0123456789'),

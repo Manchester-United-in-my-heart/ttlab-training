@@ -40,7 +40,7 @@ export default function ProductList(props: ProductListProps) {
       </div>
       <hr />
 
-      {productListByPage[currentPage].map((product) => (
+      {productListByPage && productListByPage.length > 0 && productListByPage[currentPage].map((product) => (
         <div className="w-full" key={product.name}>
           <div className="grid grid-cols-[2fr_2fr_5fr_2fr_3fr_2fr] py-3">
             <div className="font-semibold">{product.name}</div>
