@@ -2,6 +2,7 @@ import { SlNote } from 'react-icons/sl';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { MdNavigateNext } from 'react-icons/md';
 import { GrPrevious } from 'react-icons/gr';
+import { BiTrash } from 'react-icons/bi';
 
 import { useState } from 'react';
 export class Phone {
@@ -60,11 +61,11 @@ export default function UserList(props: UserListProps) {
             <div>{user.DOB.toLocaleDateString()}</div>
             <div>{user.phone.toString()}</div>
             <div>
-              <button className="px-2 py-1 bg-transparent text-[#8B909A] shadow-none">
+              <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
                 <SlNote />
               </button>
-              <button className="px-2 py-1 bg-transparent text-[#8B909A] shadow-none">
-                <FaRegTrashAlt />
+              <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
+                <BiTrash />
               </button>
             </div>
           </div>

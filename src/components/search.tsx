@@ -10,9 +10,9 @@ export default function SearchBox(props: SearchBoxProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div>
+    <div className="relative">
       <div className="flex justify-center items-center">
-        <input      
+        <input
           type="search"
           placeholder="Tìm kiếm..."
           value={searchTerm}
@@ -21,7 +21,7 @@ export default function SearchBox(props: SearchBoxProps) {
             onSearch(e.target.value);
           }}
         />
-        <span className="text-2xl">
+        <span className="absolute right-0 mr-2">
           <CiSearch />
         </span>
       </div>

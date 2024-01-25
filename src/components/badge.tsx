@@ -6,14 +6,14 @@ type Props = {
   userState: 'online' | 'offline';
 };
 
-export const Badge = (props: Props) => {
+const Badge = (props: Props) => {
   const { userName, userEmail, userAvatar, userState } = props;
   const [isHovered, setIsHovered] = useState(false);
   const showOnHover = () => {
     setIsHovered(!isHovered);
   };
   return (
-    <div className="w-12">
+    <div className="w-8">
       <div className="relative" onMouseOver={showOnHover} onMouseLeave={showOnHover}>
         <img id="badge" className="rounded-full" src={userAvatar} alt={userName} />
         <div className={`absolute bottom-0 right-0 w-3 h-3 rounded-full ${userState === 'online' ? 'bg-green-500' : 'bg-gray-500'}`}></div>
@@ -27,3 +27,5 @@ export const Badge = (props: Props) => {
     </div>
   );
 };
+
+export default Badge;

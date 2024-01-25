@@ -1,5 +1,5 @@
-import { Badge } from '../components/badge';
-import { NotificationBell } from '../components/notification-bell';
+// import { Badge } from '../components/badge';
+// import { NotificationBell } from '../components/notification-bell';
 import { SideBar } from '../fragments/side-bar';
 import { Phone, User, UserListProps } from '../components/UserList';
 import { Product } from '../components/ProductList';

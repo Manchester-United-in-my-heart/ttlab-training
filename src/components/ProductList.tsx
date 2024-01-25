@@ -1,5 +1,4 @@
 import { SlNote } from 'react-icons/sl';
-import { FaRegTrashAlt } from 'react-icons/fa';
 import { MdNavigateNext } from 'react-icons/md';
 import { GrPrevious } from 'react-icons/gr';
 
@@ -52,10 +51,10 @@ export default function ProductList(props: ProductListProps) {
               <img src={product.image} alt="" className="w-10 h-10" />
             </div>
             <div>
-              <button className="px-2 py-1 rounded-md shadow-none">
+              <button className="px-2 py-1 text-xl text-[#8B909A] rounded-md shadow-none">
                 <SlNote />
               </button>
-              <button className="px-2 py-1 rounded-md shadow-none">
+              <button className="px-2 py-1 text-xl text-[#8B909A] rounded-md shadow-none">
                 <BiTrash />
               </button>
             </div>

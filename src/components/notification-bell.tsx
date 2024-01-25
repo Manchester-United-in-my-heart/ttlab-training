@@ -3,7 +3,7 @@ type Props = {
   numberOfNotifications: number;
 };
 
-export const NotificationBell = (props: Props) => {
+const NotificationBell = (props: Props) => {
   console.log(props);
 
   const numberOfNotifications = props.numberOfNotifications;
@@ -14,3 +14,5 @@ export const NotificationBell = (props: Props) => {
     </div>
   );
 };
+
+export default NotificationBell;
