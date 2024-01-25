@@ -1,5 +1,4 @@
 import { SlNote } from 'react-icons/sl';
-import { FaRegTrashAlt } from 'react-icons/fa';
 import { MdNavigateNext } from 'react-icons/md';
 import { GrPrevious } from 'react-icons/gr';
 import { BiTrash } from 'react-icons/bi';

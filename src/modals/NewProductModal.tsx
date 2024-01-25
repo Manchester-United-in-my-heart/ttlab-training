@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
-import { Product } from '../components/ProductList';
+import { useState } from 'react';
 type NewProductModalProps = {
   onClose: () => void;
   isOpen: boolean;
-  onCreate: (product: Product) => void;
 };
 
 const NewProductModal = (props: NewProductModalProps) => {
-    const isOpen = props.isOpen;
-    const onClose = props.onClose;
-    const onCreate = props.onCreate;
+  const onClose = props.onClose;
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -24,7 +20,7 @@ const NewProductModal = (props: NewProductModalProps) => {
       description: description,
       image: image,
     };
-  }
+  };
 
   return (
     <form className="p-6 space-y-4 bg-white rounded shadow-md">
@@ -61,7 +57,13 @@ const NewProductModal = (props: NewProductModalProps) => {
         >
           Hủy
         </button>
-        <button onClick={()=>{const product = getProduct(); onCreate(product)}} className="px-4 py-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white">
+        <button
+          onClick={() => {
+            const product = getProduct();
+            console.log(product);
+          }}
+          className="px-4 py-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white"
+        >
           Tạo mới
         </button>
       </div>

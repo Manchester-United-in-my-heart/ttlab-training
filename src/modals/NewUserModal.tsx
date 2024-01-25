@@ -1,16 +1,12 @@
 import { useState } from 'react';
-import { User } from '../components/UserList';
 import { Phone } from '../components/UserList';
 type NewUserModalProps = {
   onClose: () => void;
   isOpen: boolean;
-  onCreate: (user: User) => void;
 };
 
 const NewUserModal = (props: NewUserModalProps) => {
-  const isOpen = props.isOpen;
   const onClose = props.onClose;
-  const onCreate = props.onCreate;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [dob, setDob] = useState('');
@@ -66,7 +62,8 @@ const NewUserModal = (props: NewUserModalProps) => {
           type="button"
           onClick={() => {
             const user = getUser();
-            onCreate(user);
+            console.log(user);
+            
           }}
           className="px-4 py-2 border-blue-600 rounded hover:bg-blue-600 hover:text-white"
         >
