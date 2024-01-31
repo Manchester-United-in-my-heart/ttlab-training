@@ -18,7 +18,7 @@ export type User = {
   name: string;
   email: string;
   DOB: Date;
-  phone: Phone;
+  phone: string;
 };
 export type UserListProps = {
   users: User[];
@@ -59,8 +59,8 @@ export default function UserList(props: UserListProps) {
               </div>
               <div className="font-semibold">{user.name}</div>
               <div>{user.email}</div>
-              <div>{user.DOB.toLocaleDateString()}</div>
-              <div>{user.phone.toString()}</div>
+              <div>{new Date(user.DOB).toLocaleDateString()}</div>
+              <div>{new Phone(user.phone).toString()}</div>
               <div>
                 <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
                   <SlNote />

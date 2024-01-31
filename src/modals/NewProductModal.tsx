@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import {Product} from "../components/ProductList.tsx";
 type NewProductModalProps = {
   onClose: () => void;
   isOpen: boolean;
+  onCreated: (product: Product) => void;
 };
 
 const NewProductModal = (props: NewProductModalProps) => {
@@ -58,9 +60,11 @@ const NewProductModal = (props: NewProductModalProps) => {
           Hủy
         </button>
         <button
+          type={'button'}
           onClick={() => {
             const product = getProduct();
-            console.log(product);
+            props.onCreated(product);
+            onClose();
           }}
           className="px-4 py-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-600 hover:text-white"
         >

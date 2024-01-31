@@ -4,7 +4,6 @@ type Props = {
 };
 
 const NotificationBell = (props: Props) => {
-  console.log(props);
 
   const numberOfNotifications = props.numberOfNotifications;
   return (

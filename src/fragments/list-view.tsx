@@ -36,6 +36,9 @@ type ListViewProps = {
 
   searchUser: (users: User[], value: string) => User[];
   searchProduct: (products: Product[], value: string) => Product[];
+  
+  handleAddUser: (user: User) => void;
+  handleAddProduct: (product: Product) => void;
 };
 
 export default function ListView(props: ListViewProps) {
@@ -50,7 +53,7 @@ export default function ListView(props: ListViewProps) {
       {isUserModalOpen && (
         <div className="absolute top-0 left-0 w-screen h-screen bg-[#342b2b53] z-10 flex items-center justify-center">
           <div className="mx-auto my-auto">
-            <NewUserModal isOpen={isUserModalOpen} onClose={() => setIsUserModalOpen(false)} />
+            <NewUserModal isOpen={isUserModalOpen} onClose={() => setIsUserModalOpen(false)} onCreated={props.handleAddUser}/>
           </div>
         </div>
       )}
@@ -58,7 +61,7 @@ export default function ListView(props: ListViewProps) {
       {isProductModalOpen && (
         <div className="absolute top-0 left-0 w-screen h-screen bg-[#342b2b53] z-10 flex items-center justify-center">
           <div className="mx-auto my-auto">
-            <NewProductModal isOpen={isProductModalOpen} onClose={() => setIsProductModalOpen(false)} />
+            <NewProductModal isOpen={isProductModalOpen} onClose={() => setIsProductModalOpen(false)} onCreated={props.handleAddProduct} />
           </div>
         </div>
       )}

@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Phone } from '../components/UserList';
+import {User} from '../components/UserList';
 type NewUserModalProps = {
   onClose: () => void;
   isOpen: boolean;
+  onCreated: (user: User) => void;
 };
 
 const NewUserModal = (props: NewUserModalProps) => {
@@ -18,7 +19,7 @@ const NewUserModal = (props: NewUserModalProps) => {
       name: name,
       email: email,
       DOB: new Date(dob),
-      phone: new Phone(phone),
+      phone: phone ,
       avatar: avatar,
     };
   };
@@ -62,8 +63,9 @@ const NewUserModal = (props: NewUserModalProps) => {
           type="button"
           onClick={() => {
             const user = getUser();
-            console.log(user);
-            
+            console.log(user)
+            props.onCreated(user);
+            onClose();
           }}
           className="px-4 py-2 border-blue-600 rounded hover:bg-blue-600 hover:text-white"
         >
