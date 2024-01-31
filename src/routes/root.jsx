@@ -6,6 +6,7 @@ import {DummyActiveUser, numberOfNotifications} from '../data/data.ts';
 
 export default function Root() {
   
+  const host = import.meta.env.VITE_HOST;
   // send token named 'token' to server for authentication. If return 401, redirect to login page.
   
   const token = localStorage.getItem('accessToken');
@@ -26,7 +27,7 @@ export default function Root() {
   
   // Fetch Data from server
   useEffect(() => {
-    fetch('http://localhost:3000/users', {
+    fetch(`${host}/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +59,7 @@ export default function Root() {
       console.log(err);
     });
 
-    fetch('http://localhost:3000/products', {
+    fetch(`${host}/products`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -96,7 +97,7 @@ export default function Root() {
     setFilteredUserList(newUserList);
 
     // send data to server
-    await fetch('http://localhost:3000/users', {
+    await fetch(`${host}/users`, {
       body: JSON.stringify(
         {
           name: user.name,
@@ -121,7 +122,7 @@ export default function Root() {
     setFilteredProductList(newProductList);
 
     // send data to server
-    await fetch('http://localhost:3000/products', {
+    await fetch(`${host}/products`, {
       body: JSON.stringify(
         {
           name: product.name,

@@ -2,7 +2,7 @@ import {FaEye, FaRegEyeSlash} from 'react-icons/fa';
 import {useEffect, useState} from 'react';
 
 export default function Login() {
-  
+  const host = import.meta.env.VITE_HOST ; 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
@@ -16,12 +16,13 @@ export default function Login() {
   const loginHandler = async () => {
     try {
       console.log(username, password);
-      const res = await fetch('http://localhost:3000/auth/signin', {
+      const res = await fetch(`${host}/auth/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           // CORS
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': '*', 
+          // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
         body: JSON.stringify({username, password}),
       });
