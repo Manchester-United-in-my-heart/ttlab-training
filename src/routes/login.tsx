@@ -2,13 +2,29 @@ import {FaEye, FaRegEyeSlash} from 'react-icons/fa';
 import {useEffect, useState} from 'react';
 
 export default function Login() {
-  const host = import.meta.env.VITE_HOST ; 
+  const host = import.meta.env.VITE_HOST ;
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      window.location.href = '/';
-    }
-  }, []);
+    fetch(`${host}/users`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
+      },
+    }).then((res) => {
+        console.log(res.status)
+        if (res.status !== 401) {
+          window.location.href = '/';
+        }
+      }
+    )
+  });
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem('accessToken');
+  //   if (accessToken) {
+  //     window.location.href = '/';
+  //   }
+  // }, []);
   
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
