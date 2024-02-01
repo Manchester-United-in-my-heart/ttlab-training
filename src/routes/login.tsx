@@ -22,7 +22,7 @@ export default function Login() {
           'Content-Type': 'application/json',
           // CORS
           'Access-Control-Allow-Origin': '*', 
-          // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH',
         },
         body: JSON.stringify({username, password}),
       });
