@@ -2,7 +2,7 @@ import {FaEye, FaRegEyeSlash} from 'react-icons/fa';
 import {useEffect, useState} from 'react';
 
 export default function Login() {
-  const host = import.meta.env.VITE_HOST ;
+  const host = import.meta.env.VITE_HOST || 'https://nest-mongo-gold.vercel.app' ;
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     fetch(`${host}/users`, {

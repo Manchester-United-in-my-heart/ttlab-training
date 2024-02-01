@@ -6,7 +6,7 @@ import {DummyActiveUser, numberOfNotifications} from '../data/data.ts';
 
 export default function Root() {
   
-  const host = import.meta.env.VITE_HOST;
+  const host = import.meta.env.VITE_HOST || 'https://nest-mongo-gold.vercel.app'; 
   // send token named 'token' to server for authentication. If return 401, redirect to login page.
   
   const token = localStorage.getItem('accessToken');
