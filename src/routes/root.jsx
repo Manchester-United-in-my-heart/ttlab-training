@@ -40,7 +40,6 @@ export default function Root() {
       }
       return res.json();
     }).then((data) => {
-      console.log(data);
       const userList = []
       data.forEach((user) => {
         userList.push(
