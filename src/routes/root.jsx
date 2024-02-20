@@ -241,10 +241,10 @@ export default function Root() {
   return (
     <>
       <div className="relative top-0 left-0 w-full h-full min-h-screen box-border">
-        {/* <Helmet>
+        <Helmet>
           <title>Dashboard</title>
           <link rel="icon" href="/public/ttl.svg" />
-        </Helmet> */}
+        </Helmet>
 
         <LoadingModal isLoading={isLoading} />
         <div className={`relative w-full h-full bg-[#F1F2F6] ${isSideBarOpen ? 'grid grid-flow-col grid-cols-[1fr_7fr] gap-[10px]' : 'flex gap-[10px]'} overflow-x-hidden`}>
