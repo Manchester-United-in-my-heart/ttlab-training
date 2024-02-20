@@ -5,6 +5,7 @@ import ListView from '../fragments/list-view.tsx';
 import { DummyActiveUser, numberOfNotifications } from '../data/data.ts';
 import LoadingModal from '../modals/LoadingModal.tsx';
 import { LoadingContext } from '../storage/LoadingContext.tsx';
+import { Helmet } from 'react-helmet';
 
 export default function Root() {
   const host = import.meta.env.VITE_HOST || 'https://nest-mongo-gold.vercel.app';
@@ -172,7 +173,6 @@ export default function Root() {
     });
     setIsLoading(false);
   };
-  
 
   const onDeleteProduct = async (product) => {
     const newProductList = dummyProductList.filter((p) => p.id !== product.id);
@@ -191,7 +191,7 @@ export default function Root() {
     });
     setIsLoading(false);
   };
-  
+
   const onModifyUser = async (user) => {
     console.log(user);
     const index = dummyUserList.findIndex((u) => u.id === user.id);
@@ -218,8 +218,8 @@ export default function Root() {
       },
     });
     setIsLoading(false);
-  }
-  
+  };
+
   const onDeleteUser = async (user) => {
     const newUserList = dummyUserList.filter((u) => u.id !== user.id);
     setDummyUserList(newUserList);
@@ -236,11 +236,16 @@ export default function Root() {
       },
     });
     setIsLoading(false);
-  }
+  };
 
   return (
     <>
       <div className="relative top-0 left-0 w-full h-full min-h-screen box-border">
+        <Helmet>
+          <title>Dashboard</title>
+          <link rel="icon" href="/public/ttl.svg" />
+        </Helmet>
+
         <LoadingModal isLoading={isLoading} />
         <div className={`relative w-full h-full bg-[#F1F2F6] ${isSideBarOpen ? 'grid grid-flow-col grid-cols-[1fr_7fr] gap-[10px]' : 'flex gap-[10px]'} overflow-x-hidden`}>
           <SideBar view={view} setView={setView} isOpen={isSideBarOpen} setIsOpen={setIsSideBarOpen} />
