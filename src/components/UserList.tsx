@@ -2,6 +2,7 @@ import { SlNote } from 'react-icons/sl';
 import { MdNavigateNext } from 'react-icons/md';
 import { GrPrevious } from 'react-icons/gr';
 import { BiTrash } from 'react-icons/bi';
+import UserModal from '../modals/UserModal';
 
 import { useState } from 'react';
 export class Phone {
@@ -14,6 +15,7 @@ export class Phone {
   }
 }
 export type User = {
+  id: string;
   avatar: string;
   name: string;
   email: string;
@@ -22,9 +24,14 @@ export type User = {
 };
 export type UserListProps = {
   users: User[];
+  onCreateUser: (user: User) => void;
+  onModifyUser: (user: User) => void;
+  onDeleteUser: (user: User) => void;
+  isUserModalOpen: boolean;
+  setIsUserModalOpen: (isUserModalOpen: boolean) => void;
 };
 export default function UserList(props: UserListProps) {
-  const users = props.users;
+  const { users, onCreateUser, onModifyUser, onDeleteUser, isUserModalOpen, setIsUserModalOpen } = props;
   const [numberOfUserPerPage, setNumberOfUserPerPage] = useState(5);
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -36,10 +43,20 @@ export default function UserList(props: UserListProps) {
     userListByPage.push(users.slice(i * numberOfUserPerPage, (i + 1) * numberOfUserPerPage));
   }
 
+  const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
+
   // split users into pages
 
   return (
     <div className="w-full">
+      {isUserModalOpen && (
+        <div className="absolute top-0 left-0 w-screen h-screen bg-[#342b2b53] z-10 flex items-center justify-center">
+          <div className="mx-auto my-auto">
+            <UserModal user={selectedUser} isOpen={isUserModalOpen} onClose={() => setIsUserModalOpen(false)} onCreate={onCreateUser} onModify={onModifyUser} />
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-[1fr_3fr_5fr_2fr_3fr_2fr]">
         <div className="text-[#8B909A]">AVATAR</div>
         <div className="text-[#8B909A]">TÊN NGƯỜI DÙNG</div>
@@ -62,10 +79,23 @@ export default function UserList(props: UserListProps) {
               <div>{new Date(user.DOB).toLocaleDateString()}</div>
               <div>{new Phone(user.phone).toString()}</div>
               <div>
-                <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
+                <button
+                  className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none"
+                  onClick={() => {
+                    console.log(`modify user ${user.id}`);
+                    setSelectedUser(user);
+                    props.setIsUserModalOpen(true);
+                  }}
+                >
                   <SlNote />
                 </button>
-                <button className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none">
+                <button
+                  className="px-2 py-1 text-xl bg-transparent text-[#8B909A] shadow-none"
+                  onClick={() => {
+                    // console.log('delete product');
+                    onDeleteUser(user);
+                  }}
+                >
                   <BiTrash />
                 </button>
               </div>

@@ -6,8 +6,8 @@ import NotificationBell from '../components/notification-bell';
 import Badge from '../components/badge';
 import SearchBox from '../components/search.tsx';
 import { GoPlus } from 'react-icons/go';
-import NewUserModal from '../modals/NewUserModal.tsx';
-import NewProductModal from '../modals/NewProductModal.tsx';
+import UserModal from '../modals/UserModal.tsx';
+import ProductModal from '../modals/ProductModal.tsx';
 type ListViewProps = {
   isSideBarOpen: boolean;
   setIsSideBarOpen: (isSideBarOpen: boolean) => void;
@@ -36,9 +36,15 @@ type ListViewProps = {
 
   searchUser: (users: User[], value: string) => User[];
   searchProduct: (products: Product[], value: string) => Product[];
-  
-  handleAddUser: (user: User) => void;
-  handleAddProduct: (product: Product) => void;
+
+  onCreateUser: (user: User) => void;
+  onCreateProduct: (product: Product) => void;
+
+  onModifyProduct: (product: Product) => void;
+  onDeleteProduct: (product: Product) => void;
+
+  onModifyUser: (user: User) => void;
+  onDeleteUser: (user: User) => void;
 };
 
 export default function ListView(props: ListViewProps) {
@@ -46,14 +52,14 @@ export default function ListView(props: ListViewProps) {
     USER: 'USER',
     PRODUCT: 'PRODUCT',
   };
-  const { isSideBarOpen, dummyActiveUser, numberOfNotifications, dummyUsers, dummyProducts, view, filteredUsers, setFilteredUsers, filteredProducts, setFilteredProducts, isUserModalOpen, setIsUserModalOpen, isProductModalOpen, setIsProductModalOpen, searchUser, searchProduct } = props;
+  const { isSideBarOpen, dummyActiveUser, numberOfNotifications, dummyUsers, dummyProducts, view, filteredUsers, setFilteredUsers, filteredProducts, setFilteredProducts, isUserModalOpen, setIsUserModalOpen, isProductModalOpen, setIsProductModalOpen, searchUser, searchProduct, onModifyProduct, onDeleteProduct, onCreateProduct, onCreateUser, onDeleteUser, onModifyUser } = props;
   return (
     <div className={`${!isSideBarOpen && 'w-full'} ml-[10px] mr-[10px] pt-[10px]`}>
       {/* User Modal */}
       {isUserModalOpen && (
         <div className="absolute top-0 left-0 w-screen h-screen bg-[#342b2b53] z-10 flex items-center justify-center">
           <div className="mx-auto my-auto">
-            <NewUserModal isOpen={isUserModalOpen} onClose={() => setIsUserModalOpen(false)} onCreated={props.handleAddUser}/>
+            <UserModal isOpen={isUserModalOpen} onClose={() => setIsUserModalOpen(false)} onCreate={onCreateUser} onModify={onModifyUser} />
           </div>
         </div>
       )}
@@ -61,7 +67,7 @@ export default function ListView(props: ListViewProps) {
       {isProductModalOpen && (
         <div className="absolute top-0 left-0 w-screen h-screen bg-[#342b2b53] z-10 flex items-center justify-center">
           <div className="mx-auto my-auto">
-            <NewProductModal isOpen={isProductModalOpen} onClose={() => setIsProductModalOpen(false)} onCreated={props.handleAddProduct} />
+            <ProductModal isOpen={isProductModalOpen} onClose={() => setIsProductModalOpen(false)} onCreate={onCreateProduct} onModify={onModifyProduct} />
           </div>
         </div>
       )}
@@ -110,7 +116,7 @@ export default function ListView(props: ListViewProps) {
           )
         )}
       </div>
-      <div className="bg-white p-5 rounded-xl">{view === View.PRODUCT ? <ProductPage productList={filteredProducts} /> : view === View.USER && <UserPage users={filteredUsers} />}</div>
+      <div className="bg-white p-5 rounded-xl">{view === View.PRODUCT ? <ProductPage productList={filteredProducts} onModifyProduct={onModifyProduct} onDeleteProduct={onDeleteProduct} onCreatedProduct={onCreateProduct} isProductModalOpen={isProductModalOpen} setIsProductModalOpen={setIsProductModalOpen} /> : view === View.USER && <UserPage users={filteredUsers} isUserModalOpen={isUserModalOpen} onCreateUser={onCreateUser} onDeleteUser={onDeleteUser} onModifyUser={onModifyUser} setIsUserModalOpen={setIsUserModalOpen} />}</div>
     </div>
   );
 }

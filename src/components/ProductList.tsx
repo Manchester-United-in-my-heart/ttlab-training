@@ -4,8 +4,10 @@ import { GrPrevious } from 'react-icons/gr';
 
 import { useState } from 'react';
 import { BiTrash } from 'react-icons/bi';
+import ProductModal from '../modals/ProductModal';
 
 export type Product = {
+  id: string;
   name: string;
   price: number;
   quantity: number;
@@ -15,10 +17,18 @@ export type Product = {
 
 type ProductListProps = {
   products: Product[];
+  onModifyProduct: (product: Product) => void;
+  onCreateProduct: (product: Product) => void;
+  onDeleteProduct: (product: Product) => void;
+  isProductModalOpen: boolean;
+  setIsProductModalOpen: (isProductModalOpen: boolean) => void;
 };
 
 export default function ProductList(props: ProductListProps) {
   const products = props.products;
+  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined);
+  const onModifyProduct = props.onModifyProduct;
+  const onDeleteProduct = props.onDeleteProduct;
   const [numberOfProductPerPage, setNumberOfProductPerPage] = useState(10);
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -30,6 +40,16 @@ export default function ProductList(props: ProductListProps) {
 
   return (
     <div className="w-full">
+      {
+        // Product Modal
+        props.isProductModalOpen && (
+          <div className="absolute top-0 left-0 w-screen h-screen bg-[#342b2b53] z-10 flex items-center justify-center">
+            <div className="mx-auto my-auto">
+              <ProductModal product={selectedProduct} isOpen={props.isProductModalOpen} onClose={() => props.setIsProductModalOpen(false)} onCreate={props.onCreateProduct} onModify={onModifyProduct} />
+            </div>
+          </div>
+        )
+      }
       <div className="grid grid-cols-[2fr_2fr_5fr_2fr_3fr_2fr]">
         <div className="text-[#8B909A]">TÊN SẢN PHẨM</div>
         <div className="text-[#8B909A]">GIÁ</div>
@@ -40,28 +60,43 @@ export default function ProductList(props: ProductListProps) {
       </div>
       <hr />
 
-      {productListByPage && productListByPage.length > 0 && productListByPage[currentPage].map((product) => (
-        <div className="w-full" key={product.name}>
-          <div className="grid grid-cols-[2fr_2fr_5fr_2fr_3fr_2fr] py-3">
-            <div className="font-semibold">{product.name}</div>
-            <div>{product.price}</div>
-            <div>{product.quantity}</div>
-            <div>{product.description}</div>
-            <div>
-              <img src={product.image} alt="" className="w-10 h-10" />
+      {productListByPage &&
+        productListByPage.length > 0 &&
+        productListByPage[currentPage].map((product) => (
+          <div className="w-full" key={product.id}>
+            <div className="grid grid-cols-[2fr_2fr_5fr_2fr_3fr_2fr] py-3">
+              <div className="font-semibold">{product.name}</div>
+              <div>{product.price}</div>
+              <div>{product.quantity}</div>
+              <div>{product.description}</div>
+              <div>
+                <img src={product.image} alt="" className="w-10 h-10" />
+              </div>
+              <div>
+                <button
+                  className="px-2 py-1 text-xl text-[#8B909A] rounded-md shadow-none"
+                  onClick={() => {
+                    console.log(`modify product ${product.id}`);
+                    props.setIsProductModalOpen(true);
+                    setSelectedProduct(product);
+                  }}
+                >
+                  <SlNote />
+                </button>
+                <button
+                  className="px-2 py-1 text-xl text-[#8B909A] rounded-md shadow-none"
+                  onClick={() => {
+                    // console.log('delete product');
+                    onDeleteProduct(product);
+                  }}
+                >
+                  <BiTrash />
+                </button>
+              </div>
             </div>
-            <div>
-              <button className="px-2 py-1 text-xl text-[#8B909A] rounded-md shadow-none">
-                <SlNote />
-              </button>
-              <button className="px-2 py-1 text-xl text-[#8B909A] rounded-md shadow-none">
-                <BiTrash />
-              </button>
-            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-      ))}
+        ))}
 
       <div>
         <div className="flex justify-between">
