@@ -59,7 +59,7 @@ export default function Login() {
     <div className="w-full mt-[119px] mx-[507px]">
       <Helmet>
         <title>Login</title>
-        <link rel="icon" href="/public/ttl.svg" />
+        <link rel="icon" href="/ttl.svg" />
       </Helmet>
       <div className="flex flex-col justify-center items-center font-['Public Sans]">
         <svg width="108" height="60" viewBox="0 0 108 60" fill="none" xmlns="http://www.w3.org/2000/svg">

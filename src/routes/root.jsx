@@ -243,7 +243,7 @@ export default function Root() {
       <div className="relative top-0 left-0 w-full h-full min-h-screen box-border">
         <Helmet>
           <title>Dashboard</title>
-          <link rel="icon" href="/public/ttl.svg" />
+          <link rel="icon" href="/ttl.svg" />
         </Helmet>
 
         <LoadingModal isLoading={isLoading} />
