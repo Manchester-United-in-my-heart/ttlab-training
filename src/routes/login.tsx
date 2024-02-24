@@ -17,6 +17,29 @@ export default function Login() {
       console.log(res.status);
       if (res.status !== 401) {
         window.location.href = '/';
+      } else {
+        const refreshToken = localStorage.getItem('refreshToken');
+        fetch(`${host}/auth/refresh-token`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ refreshToken }),
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data.access_token && data.refresh_token) {
+              const accessToken = data.access_token;
+              const refreshToken = data.refresh_token;
+              localStorage.setItem('accessToken', accessToken);
+              localStorage.setItem('refreshToken', refreshToken);
+              window.location.href = '/';
+            } else {
+              console.log('error');
+            }
+          });
       }
     });
   });
@@ -44,9 +67,11 @@ export default function Login() {
         body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
-      if (data.access_token) {
+      if (data.access_token && data.refresh_token) {
         const accessToken = data.access_token;
+        const refreshToken = data.refresh_token;
         localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
         window.location.href = '/';
       } else {
         console.log('error');
