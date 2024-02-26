@@ -29,7 +29,7 @@ export default function ProductList(props: ProductListProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined);
   const onModifyProduct = props.onModifyProduct;
   const onDeleteProduct = props.onDeleteProduct;
-  const [numberOfProductPerPage, setNumberOfProductPerPage] = useState(10);
+  const [numberOfProductPerPage, setNumberOfProductPerPage] = useState(5);
 
   const [currentPage, setCurrentPage] = useState(0);
   const pages = Math.ceil(products.length / numberOfProductPerPage);
@@ -108,9 +108,9 @@ export default function ProductList(props: ProductListProps) {
                 setNumberOfProductPerPage(parseInt(e.target.value));
               }}
             >
+              <option value="5">5</option>
               <option value="10">10</option>
               <option value="20">20</option>
-              <option value="50">50</option>
             </select>{' '}
             of {products.length}
           </div>

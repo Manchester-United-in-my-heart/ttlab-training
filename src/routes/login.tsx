@@ -81,7 +81,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="w-full mt-[119px] mx-[507px]">
+    <div className="w-full my-auto mx-auto">
       <Helmet>
         <title>Login</title>
         <link rel="icon" href="/ttl.svg" />
